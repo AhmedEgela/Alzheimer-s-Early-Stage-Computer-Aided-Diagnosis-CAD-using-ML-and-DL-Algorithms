@@ -1,1 +1,25 @@
-TEST
+Project Architecture:
+- Data Loading and Preprocessing: Data is loaded from Kaggle into Colab
+- Extracting classical features to be fed into the rest of the ML pipeline
+- Training & Evaluating the ML pipeline using different ML estimators as will be mentioned below.
+- Deep Features Extraction and DL models training and evaluating.
+- Deep Features Extraction and ML models training and evaluating.
+
+
+Design Decisions:
+- Data Preprocessing (ML): removing highly correlated features using Pearson correlation coefficient and Recurssive Feature Elimination. 
+- Data Preprocessing (DL): resizing image and ensuring color channels
+- Model Training (ML & DL) 
+
+
+Algorithms Used:
+- ML: Linear Regression, Random Forest, Decision Tree, KNN, and SVM.
+- DL: VGG19, EfficientNet, InceptionV3.
+- Data Preprocssing: Z-score Normalization, Label Encoding, and Recurssive Feature Elimination. 
+
+
+Dependencies:
+- OS, Pandas, NumPy for file handling and reading.
+- Scikit-learn for ML algorithms, including preprocessing and classifiers.
+- Matplotlib and Seaborn for data visualization.
+- TensorFlow and Pytorch for DL models, including VGG19, Inception19, and EfficientNet.
