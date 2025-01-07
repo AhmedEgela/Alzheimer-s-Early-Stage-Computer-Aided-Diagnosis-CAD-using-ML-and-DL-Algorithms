@@ -7,5 +7,5 @@ This work explores the beyonds of early-stage computer-aid diagnosis for Alzheim
  Install the required dependencies in requirements.txt.
 
 ## Usage
-Python use scikit-learn and TensorFlow in Colab.
+Python Package: use PyRadiomics, scikit-learn, and TensorFlow in Colab.
 You can find further information and instructions in the code and the documentation provided in the repo.
