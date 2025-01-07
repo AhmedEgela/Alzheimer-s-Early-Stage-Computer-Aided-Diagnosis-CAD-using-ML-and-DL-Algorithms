@@ -1,0 +1,13 @@
+os
+pandas==2.2.2
+numpy==1.26.4
+SimpleITK==2.4.0
+seaborn==0.13.2
+matplotlib==3.8.0
+scikit-learn==1.6.0
+tensorflow
+opendatasets
+zipfile
+torch
+torchvision
+torchaudio
