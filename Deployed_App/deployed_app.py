@@ -93,14 +93,15 @@ def main():
     encoder_in = open(os.path.join(this_dir, "Deployed_App/model_label_encoder.pkl"),"rb")
     encoder = pickle.load(encoder_in)
     st.title("Alzheimer Early Diagnosis [MRI Modality]")
-    file_uploader = st.file_uploader("Upload JPG MRI File", type=["jpg"])
-    if file_uploader:
-        img_path = f"temp_img.{file_uploader.name.split('.')[-1]}"
-        with open(file_uploader.name, 'wb') as file:
-          file.write(file_uploader.read())
+    file_uploaded = st.file_uploader("Upload JPG MRI File", type=["jpg"])
+    if file_uploaded is not None:
+        # img_path = f"temp_img.{file_uploader.name.split('.')[-1]}"
+        with open(file_uploaded.name, 'wb') as file:
+          file.write(file_uploaded.read())
         st.text("Features are extracted...")
         img_features = image_feature_extractor(img_path)
-    
+
+      
         img_features.insert(0, 'Unnamed: 0', 0)
         st.text("Features are normalized...")
         scaled_img = scaler.transform(img_features)
