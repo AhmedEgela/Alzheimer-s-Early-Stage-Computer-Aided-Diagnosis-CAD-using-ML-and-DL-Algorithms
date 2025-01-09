@@ -84,13 +84,13 @@ def image_feature_extractor(img_path):
 def main():
     this_dir = os.getcwd()
     
-    pickle_in = open(os.path.join(this_dir, "classifier.pkl"),"rb")
+    pickle_in = open(os.path.join(this_dir, "Deployed_App/classifier.pkl"),"rb")
     classifier = pickle.load(pickle_in)
 
-    scaler_in = open(os.path.join(this_dir, "model_scaler.pkl"),"rb")
+    scaler_in = open(os.path.join(this_dir, "Deployed_App/model_scaler.pkl"),"rb")
     scaler = pickle.load(scaler_in)
 
-    encoder_in = open(os.path.join(this_dir, "model_label_encoder.pkl"),"rb")
+    encoder_in = open(os.path.join(this_dir, "Deployed_App/model_label_encoder.pkl"),"rb")
     encoder = pickle.load(encoder_in)
     st.title("Alzheimer Early Diagnosis [MRI Modality]")
     file_uploader = st.file_uploader("Upload JPG MRI File", type=["jpg"])
