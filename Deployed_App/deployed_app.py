@@ -2,6 +2,7 @@ import pandas as pd
 import SimpleITK as sitk
 import streamlit as st
 import pickle
+import os
 
 from sklearn.model_selection import cross_val_score, train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler, LabelEncoder
@@ -81,15 +82,15 @@ def image_feature_extractor(img_path):
 
 
 def main():
+    this_dir = os.getcwd()
     
-    pickle_in = open("/mount/src/alzheimer-s-early-stage-computer-aided-diagnosis-cad-using-ml-and-dl-algorithms/Deployed_App/classifier.pkl","rb")
+    pickle_in = open(os.path.join(this_dir, "classifier.pkl"),"rb")
     classifier = pickle.load(pickle_in)
 
-    scaler_in = open("model_scaler.pkl","rb")
+    scaler_in = open(os.path.join(this_dir, "model_scaler.pkl"),"rb")
     scaler = pickle.load(scaler_in)
 
-
-    encoder_in = open("model_label_encoder.pkl","rb")
+    encoder_in = open(os.path.join(this_dir, "model_label_encoder.pkl"),"rb")
     encoder = pickle.load(encoder_in)
     st.title("Alzheimer Early Diagnosis [MRI Modality]")
     file_uploader = st.file_uploader("Upload JPG MRI File", type=["jpg"])
