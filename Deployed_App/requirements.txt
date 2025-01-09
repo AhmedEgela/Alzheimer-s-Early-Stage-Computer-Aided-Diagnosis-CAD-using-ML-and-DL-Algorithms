@@ -1,7 +1,0 @@
-pandas
-SimpleITK
-streamlit
-scikit-learn
-numpy
-scipy
-pyradiomics
