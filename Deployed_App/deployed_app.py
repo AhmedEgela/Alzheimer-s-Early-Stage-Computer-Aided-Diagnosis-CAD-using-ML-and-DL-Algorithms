@@ -96,7 +96,7 @@ def main():
     file_uploader = st.file_uploader("Upload JPG MRI File", type=["jpg"])
     if file_uploader:
         img_path = f"temp_img.{file_uploader.name.split('.')[-1]}"
-        with open(file_uploader, 'wb') as file:
+        with open(file_uploader.name, 'wb') as file:
           file.write(file_uploader.read())
         st.text("Features are extracted...")
         img_features = image_feature_extractor(img_path)
