@@ -73,7 +73,7 @@ def image_feature_extractor(img_path):
 
 def main():
     
-    pickle_in = open("classifier.pkl","rb")
+    pickle_in = open("/mount/src/alzheimer-s-early-stage-computer-aided-diagnosis-cad-using-ml-and-dl-algorithms/Deployed_App/classifier.pkl","rb")
     classifier = pickle.load(pickle_in)
 
     scaler_in = open("model_scaler.pkl","rb")
