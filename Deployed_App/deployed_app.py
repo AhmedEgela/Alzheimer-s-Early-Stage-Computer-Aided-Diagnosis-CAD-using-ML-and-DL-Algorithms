@@ -97,20 +97,20 @@ def main():
     if file_uploader:
         img_path = f"temp_img.{file_uploader.name.split('.')[0]}"
 
-    st.text("Features are extracted...")
-    img_features = image_feature_extractor(img_path)
+        st.text("Features are extracted...")
+        img_features = image_feature_extractor(img_path)
+    
+        img_features.insert(0, 'Unnamed: 0', 0)
+        st.text("Features are normalized...")
+        scaled_img = scaler.transform(img_features)
+        scaled_img_df = pd.DataFrame(scaled_img, columns=img_features.columns)
+        selected_features_titles = ['Energy', 'Elongation', 'DifferenceAverage', 'DifferenceEntropy', 'DifferenceVariance', 'Id', 'Idm', 'Idmn', 'Imc1', 'Imc2', 'InverseVariance', 'JointAverage', 'JointEnergy', 'JointEntropy', 'MCC', 'MaximumProbability', 'SumAverage', 'SumEntropy', 'SumSquares', 'GrayLevelNonUniformityNormalized', 'HighGrayLevelRunEmphasis', 'LowGrayLevelRunEmphasis', 'Busyness', 'Coarseness', 'Complexity', 'DependenceEntropy', 'DependenceVariance', 'HighGrayLevelEmphasis', 'LowGrayLevelEmphasis', 'HighGrayLevelZoneEmphasis', 'LowGrayLevelZoneEmphasis', 'SizeZoneNonUniformity', 'SizeZoneNonUniformityNormalized', 'ZoneEntropy']
 
-    img_features.insert(0, 'Unnamed: 0', 0)
-    st.text("Features are normalized...")
-    scaled_img = scaler.transform(img_features)
-    scaled_img_df = pd.DataFrame(scaled_img, columns=img_features.columns)
-    selected_features_titles = ['Energy', 'Elongation', 'DifferenceAverage', 'DifferenceEntropy', 'DifferenceVariance', 'Id', 'Idm', 'Idmn', 'Imc1', 'Imc2', 'InverseVariance', 'JointAverage', 'JointEnergy', 'JointEntropy', 'MCC', 'MaximumProbability', 'SumAverage', 'SumEntropy', 'SumSquares', 'GrayLevelNonUniformityNormalized', 'HighGrayLevelRunEmphasis', 'LowGrayLevelRunEmphasis', 'Busyness', 'Coarseness', 'Complexity', 'DependenceEntropy', 'DependenceVariance', 'HighGrayLevelEmphasis', 'LowGrayLevelEmphasis', 'HighGrayLevelZoneEmphasis', 'LowGrayLevelZoneEmphasis', 'SizeZoneNonUniformity', 'SizeZoneNonUniformityNormalized', 'ZoneEntropy']
-
-    best_features_img_df = scaled_img_df[selected_features_titles]
-    if st.button("Predict"):
-        result = classifier.predict(best_features_img_df)
-
-        print(encoder.inverse_transform(result))
-        st.success(f"The model predicts the scan to be: {result}")
+        best_features_img_df = scaled_img_df[selected_features_titles]
+        if st.button("Predict"):
+            result = classifier.predict(best_features_img_df)
+    
+            print(encoder.inverse_transform(result))
+            st.success(f"The model predicts the scan to be: {result}")
 
 main()
