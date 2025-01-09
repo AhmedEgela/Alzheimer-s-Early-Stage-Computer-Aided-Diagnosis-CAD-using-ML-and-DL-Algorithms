@@ -1,3 +1,4 @@
 pandas
 SimpleITK
 streamlit
+sklearn
