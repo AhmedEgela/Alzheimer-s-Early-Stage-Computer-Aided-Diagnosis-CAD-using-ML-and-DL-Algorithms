@@ -3,7 +3,6 @@ import SimpleITK as sitk
 import streamlit as st
 import pickle
 import os
-import pyradiomics as radiomics
 
 from sklearn.model_selection import cross_val_score, train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler, LabelEncoder
@@ -24,7 +23,7 @@ def image_feature_extractor(img_path):
   img = sitk.ReadImage(img_path)
 
   # firstorder features extraction module
-  from radiomics.firstorder import RadiomicsFirstOrder
+  from pyradiomics.firstorder import RadiomicsFirstOrder
   _1stOrder = RadiomicsFirstOrder(img, img)
   _1stOrder.enableAllFeatures()
   computed_features1 = _1stOrder.execute()
@@ -32,7 +31,7 @@ def image_feature_extractor(img_path):
     df_img[f"{key}"] = pd.Series(value)
 
   # shape2D features extraction module
-  from radiomics.shape2D import RadiomicsShape2D
+  from pyradiomics.shape2D import RadiomicsShape2D
   shape2d = RadiomicsShape2D(img, img)
   shape2d.enableAllFeatures()
   computed_features2 = shape2d.execute()
@@ -40,7 +39,7 @@ def image_feature_extractor(img_path):
     df_img[f"{key}"] = pd.Series(value)
 
   # glcm features extraction module
-  from radiomics.glcm import RadiomicsGLCM
+  from pyradiomics.glcm import RadiomicsGLCM
   RadiomicsGLCM = RadiomicsGLCM(img, img)
   RadiomicsGLCM.enableAllFeatures()  # Enables all first-order features
   computed_features3 = RadiomicsGLCM.execute()
@@ -48,7 +47,7 @@ def image_feature_extractor(img_path):
     df_img[f"{key}"] = pd.Series(value)
 
   # glrlm features extraction module
-  from radiomics.glrlm import RadiomicsGLRLM
+  from pyradiomics.glrlm import RadiomicsGLRLM
   RadiomicsGLRLM = RadiomicsGLRLM(img, img)
   RadiomicsGLRLM.enableAllFeatures()
   computed_features4 = RadiomicsGLRLM.execute()
@@ -56,7 +55,7 @@ def image_feature_extractor(img_path):
     df_img[f"{key}"] = pd.Series(value)
 
   # ngtdm features extraction module
-  from radiomics.ngtdm import RadiomicsNGTDM
+  from pyradiomics.ngtdm import RadiomicsNGTDM
   RadiomicsNGTDM = RadiomicsNGTDM(img, img)
   RadiomicsNGTDM.enableAllFeatures()
   computed_features5 = RadiomicsNGTDM.execute()
@@ -64,7 +63,7 @@ def image_feature_extractor(img_path):
     df_img[f"{key}"] = pd.Series(value)
 
   # gldm features extraction module
-  from radiomics.gldm import RadiomicsGLDM
+  from pyradiomics.gldm import RadiomicsGLDM
   RadiomicsGLDM = RadiomicsGLDM(img, img)
   RadiomicsGLDM.enableAllFeatures()
   computed_features6 = RadiomicsGLDM.execute()
@@ -72,7 +71,7 @@ def image_feature_extractor(img_path):
     df_img[f"{key}"] = pd.Series(value)
 
   # glszm features extraction module
-  from radiomics.glszm import RadiomicsGLSZM
+  from pyradiomics.glszm import RadiomicsGLSZM
   RadiomicsGLSZM = RadiomicsGLSZM(img, img)
   RadiomicsGLSZM.enableAllFeatures()
   computed_features7 = RadiomicsGLSZM.execute()
