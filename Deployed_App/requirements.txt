@@ -3,3 +3,4 @@ SimpleITK
 streamlit
 scikit-learn
 pyradiomics
+numpy
